@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openbench-cyber"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "Cybersecurity evaluation plugin for openbench"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    { name = "Aarush Sah" },
+    { name = "Groq" },
+]
+dependencies = [
+    "inspect-cyber==0.1.0",
+    "openbench>=0.5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/groq/openbench"
+Repository = "https://github.com/groq/openbench-cyber"
+
+[project.entry-points."openbench.benchmarks"]
+cyber = "openbench_cyber.metadata:get_benchmark_metadata"
+
+[tool.ruff]
+extend-exclude = [
+    "src/openbench_cyber/evals/cybench/challenges",
+    "src/openbench_cyber/evals/cybench/agent_sandbox",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["openbench_cyber*"]
+
+[tool.mypy]
+exclude = [
+    "src/openbench_cyber/evals/cybench/challenges",
+    "src/openbench_cyber/evals/cybench/agent_sandbox",
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "openbench_cyber.evals.cybench.challenges.*",
+]
+ignore_errors = true
+
+[tool.setuptools.package-data]
+"openbench_cyber.evals.cybench" = [
+    "README.md",
+    "build-images.sh",
+    "push_images.sh",
+    "agent_sandbox/**",
+    "challenges/**",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "pre-commit>=4.2.0",
+    "pytest>=8.3.5",
+    "pytest-asyncio==0.24.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.11.9",
+    "types-jsonschema>=4.0.0",
+    "types-pyyaml>=6.0.12.20250809",
+]
