@@ -55,6 +55,17 @@ def get_benchmark_metadata() -> dict[str, BenchmarkMetadata]:
             module_path="openbench_cyber.evals.cybench",
             function_name="cybench",
         ),
+        "cvebench": BenchmarkMetadata(
+            name="CVEBench",
+            description=(
+                "Agentic exploitation benchmark targeting real-world CVE replicas "
+                "with Dockerized victims and graders."
+            ),
+            category="cybersecurity",
+            tags=["cybersecurity", "agentic", "docker", "exploit"],
+            module_path="openbench_cyber.evals.cvebench",
+            function_name="cvebench",
+        ),
     }
 
 

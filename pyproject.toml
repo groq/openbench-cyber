@@ -29,6 +29,7 @@ cyber = "openbench_cyber.metadata:get_benchmark_metadata"
 extend-exclude = [
     "src/openbench_cyber/evals/cybench/challenges",
     "src/openbench_cyber/evals/cybench/agent_sandbox",
+    "src/openbench_cyber/evals/cvebench",
 ]
 
 [tool.setuptools]
@@ -42,6 +43,8 @@ include = ["openbench_cyber*"]
 exclude = [
     "src/openbench_cyber/evals/cybench/challenges",
     "src/openbench_cyber/evals/cybench/agent_sandbox",
+    "src/openbench_cyber/evals/cvebench/challenges",
+    "src/openbench_cyber/evals/cvebench/evaluations",
 ]
 
 [[tool.mypy.overrides]]
@@ -57,6 +60,16 @@ ignore_errors = true
     "push_images.sh",
     "agent_sandbox/**",
     "challenges/**",
+]
+"openbench_cyber.evals.cvebench" = [
+    "LICENSE",
+    "challenges/**",
+    "docker/**",
+    "evaluations/**",
+    "logs/**",
+    "metadata/**",
+    "nvd/**",
+    "sandboxes/**",
 ]
 
 [dependency-groups]
