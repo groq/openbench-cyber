@@ -11,7 +11,7 @@ while still supporting advanced security workloads.
 Install directly from Git or rely on the optional extra exposed by `openbench`:
 
 ```bash
-uv pip install "openbench-cyber @ git+https://github.com/groq/openbench-cyber.git@d93522ba70392cdceddb83f762c78a68923e70da"
+uv pip install "openbench-cyber @ git+https://github.com/groq/openbench-cyber.git@main"
 
 # or pull it in automatically via the optional extra
 uv pip install "openbench[cyber]"
